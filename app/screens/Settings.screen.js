@@ -1,20 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { Button, View, Text, StyleSheet } from "react-native"
 import { ScreenContainer } from "react-native-screens"
 
-import { AuthContext } from '../context/auth.context';
-
-export const Profile = ()=>{
-
-    const {signOut} = useContext(AuthContext);
+export const SettingsScreen = ({navigation})=>{
     return (
         <ScreenContainer>
             <View>
-            <Text style={styles.txt}>
-                Profile screen
-            </Text>
+              <Text style={styles.txt}>
+                Settings screen
+              </Text>
             </View>
-            <Button title="sign out" onPress={() => signOut()}/>
+            <Button title="Toggle Drawer" onPress={() => {navigation.toggleDrawer()}}/>
         </ScreenContainer>
     )
 }

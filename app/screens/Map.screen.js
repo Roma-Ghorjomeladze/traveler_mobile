@@ -1,19 +1,24 @@
-import { Button, View } from "react-native"
+import React from 'react';
+import { Button, View, Text, StyleSheet } from "react-native"
 import { ScreenContainer } from "react-native-screens"
 
 export const MapScreen = ()=>{
-
-    handleAddImage = () => {
-        alert('handleAddImage')
-    }
     return (
         <ScreenContainer>
             <View>
-            <Text>
-                MapScreen screen
+            <Text style = {styles.txt}>
+                Map screen
             </Text>
             </View>
-            <Button title="AddImages" onPress={handleAddImage}/>
+            <Button title="Maps" onPress={() => alert('hello from maps')}/>
         </ScreenContainer>
     )
 }
+
+const styles = StyleSheet.create({
+    txt: {
+        width: "100%",
+        fontSize: 25,
+        marginBottom: 40,
+    }
+})

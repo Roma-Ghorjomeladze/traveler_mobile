@@ -1,19 +1,24 @@
-import { Button, View } from "react-native"
+import React from 'react';
+import { Button, View, Text, StyleSheet } from "react-native"
 import { ScreenContainer } from "react-native-screens"
 
 export const Home = ()=>{
-
-    hanldeHomeBtn = () => {
-        alert('home btn')
-    }
     return (
         <ScreenContainer>
             <View>
-            <Text>
+            <Text style = {styles.txt}>
                 Home screen
             </Text>
             </View>
-            <Button title="Home" onPress={hanldeHomeBtn}/>
+            <Button title="Home" onPress={() => {alert('zd')}}/>
         </ScreenContainer>
     )
 }
+
+const styles = StyleSheet.create({
+    txt: {
+        width: "100%",
+        fontSize: 25,
+        marginBottom: 40,
+    }
+})
