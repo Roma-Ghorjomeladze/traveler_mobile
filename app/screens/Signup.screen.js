@@ -11,7 +11,7 @@ export const Signup = ({navigation}) => {
       <View>
         <Text style={styles.txt}>Signup screen</Text>
       </View>
-      <Button style={styles.btn} title="to signin" onPress={() => signUp()} />
+      <Button style={styles.btn} title="sign up" onPress={() => signUp()} />
     </ScreenContainer>
   );
 };

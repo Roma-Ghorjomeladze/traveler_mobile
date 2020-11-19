@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, View, Text, StyleSheet } from "react-native"
 import { ScreenContainer } from "react-native-screens"
 
-export const Home = ()=>{
+export const Home = ({navigation})=>{
     return (
         <ScreenContainer>
             <View>
@@ -11,6 +11,9 @@ export const Home = ()=>{
             </Text>
             </View>
             <Button title="Home" onPress={() => {alert('zd')}}/>
+            <View style={styles.btn} >
+            <Button  title="Toggle Drawer" onPress={() => navigation.toggleDrawer()}/>
+            </View>
         </ScreenContainer>
     )
 }
@@ -20,5 +23,8 @@ const styles = StyleSheet.create({
         width: "100%",
         fontSize: 25,
         marginBottom: 40,
+    },
+    btn: {
+        marginTop: 30
     }
 })
