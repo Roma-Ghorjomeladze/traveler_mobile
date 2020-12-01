@@ -1,10 +1,12 @@
-import React, {useState, useEffect, useMemo} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import React, { useState, useEffect, useMemo } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { Provider } from 'react-redux';
 
-import {LoadingComponent} from './app/components/Loading';
-import {AuthContext} from './app/context/auth.context';
-import {RootStackScreen} from './app/navigation/stackScreens';
+import { LoadingComponent } from './app/components/Loading';
+import { AuthContext } from './app/context/auth.context';
+import { RootStackScreen } from './app/navigation/stackScreens';
+import store from './app/redux/store';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -38,16 +40,16 @@ const App = () => {
 
   const getToken = async () => {
     try {
-        const token = await AsyncStorage.getItem('user_token');
-        if (!token) {
-          setToken(null);
-          setLoading(false);
-        } else {
-          setToken(token);
-          setLoading(false);
-        }
+      const token = await AsyncStorage.getItem('user_token');
+      if (!token) {
+        setToken(null);
+        setLoading(false);
+      } else {
+        setToken(token);
+        setLoading(false);
+      }
     } catch (error) {
-      console.log({error});
+      console.log({ error });
     }
   };
 
@@ -56,11 +58,13 @@ const App = () => {
   }
 
   return (
-    <AuthContext.Provider value={authContext}>
-      <NavigationContainer>
-        <RootStackScreen token={token} />
-      </NavigationContainer>
-    </AuthContext.Provider>
+    <Provider store = {store}>
+      <AuthContext.Provider value={authContext}>
+        <NavigationContainer>
+          <RootStackScreen token={token}/>
+        </NavigationContainer>
+      </AuthContext.Provider>
+    </Provider>
   );
 };
 
