@@ -1,11 +1,15 @@
 import React, {useContext} from 'react';
 import {Button, View, Text, StyleSheet} from 'react-native';
 import {ScreenContainer} from 'react-native-screens';
+import {connect} from 'react-redux';
 
-import {AuthContext} from '../context/auth.context';
+import {login} from '../redux/auth/authActions';
 
-export const Login = ({navigation}) => {
-  const {signIn} = useContext(AuthContext);
+const Login = ({navigation, loginUser}) => {
+  const handleLogin = () => {
+    loginUser({username: 'test', password: '123'});
+    console.log('pressed');
+  }
   return (
     <ScreenContainer>
       <View>
@@ -19,10 +23,25 @@ export const Login = ({navigation}) => {
         }}
       />
 
-      <Button style={styles.btn} title="signin" onPress={() => signIn()} />
+      <Button style={styles.btn} title="signin" onPress={() => handleLogin()} />
     </ScreenContainer>
   );
 };
+
+const mapStateToProps = state =>{
+  return {
+    auth: state.auth
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: (credentials) => dispatch(login(credentials))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
 
 const styles = StyleSheet.create({
   btn: {

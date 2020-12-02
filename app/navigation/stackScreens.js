@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import {Login} from '../screens/Login.screen';
+import Login from '../screens/Login.screen';
 import {Signup} from '../screens/Signup.screen';
 import {Home} from '../screens/Home.screen';
 import {Profile} from '../screens/Profile.screen';
